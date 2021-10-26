@@ -1,10 +1,10 @@
 <div class="container py-8">
     <x-table-responsive>
 
-        <div class="px-6 py-4 flex">
-            <input wire:keydown='limpiar_page' wire:model='search' type="text" class="form-input flex-1 shadow-sm" placeholder="Ingrese el nombre de un curso">
+        <div class="flex px-6 py-4">
+            <input wire:keydown='limpiar_page' wire:model='search' type="text" class="flex-1 shadow-sm form-input" placeholder="Ingrese el nombre del documento">
 
-            <a class="btn btn-danger ml-2" href="{{ route('instructor.courses.create') }}">Crear Nuevo Curso</a>
+            <a class="ml-2 btn btn-danger" href="{{ route('instructor.courses.create') }}">Crear Nuevo Registro</a>
         </div>
 
         @if ($courses->count())
@@ -14,19 +14,19 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Nombre
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Matriculados
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Calificación
                     </th>
                     <th scope="col"
-                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Status
                     </th>
                     <th scope="col" class="relative px-6 py-3">
@@ -40,14 +40,14 @@
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
-                            <div class="flex-shrink-0 h-10 w-10">
+                            <div class="flex-shrink-0 w-10 h-10">
                                 @isset($course->image)
-                                    <img class="h-10 w-10 rounded-full object-cover object-center" src="{{ Storage::url($course->image->url) }}"
+                                    <img class="object-cover object-center w-10 h-10 rounded-full" src="{{ Storage::url($course->image->url) }}"
                                     alt="">
                                     @else
                                     <img id="picture"
                                     src="https://images.pexels.com/photos/733857/pexels-photo-733857.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                                    alt="" class="h-10 w-10 rounded-full object-cover object-center">
+                                    alt="" class="object-cover object-center w-10 h-10 rounded-full">
                                 @endisset
 
                             </div>
@@ -66,8 +66,8 @@
                         <div class="text-sm text-gray-500">Alumnos Matriculados</div>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="text-sm text-gray-900 flex item-center">{{ $course->rating }}
-                            <ul class="flex text-sm ml-2">
+                        <div class="flex text-sm text-gray-900 item-center">{{ $course->rating }}
+                            <ul class="flex ml-2 text-sm">
                                 <li class="mr-1"><i
                                         class="fas fa-star text-{{ $course->rating >= 1 ? 'yellow' : 'gray' }}-400"></i>
                                 </li>
@@ -91,26 +91,26 @@
                         @switch($course->status)
                         @case(1)
                         <span
-                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                            class="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full">
                             Borrador
                         </span>
                         @break
                         @case(2)
                         <span
-                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                            class="inline-flex px-2 text-xs font-semibold leading-5 text-yellow-800 bg-yellow-100 rounded-full">
                             Revición
                         </span>
                         @break
                         @case(3)
                         <span
-                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                            class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
                             Publicado
                         </span>
                         @break
                         @default
                         @endswitch
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                         <a href="{{ route('instructor.courses.edit',$course) }}" class="text-indigo-600 hover:text-indigo-900">Edit</a>
                     </td>
                 </tr>

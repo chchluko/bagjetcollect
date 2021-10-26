@@ -3,11 +3,11 @@
 @section('title', 'Coders')
 
 @section('content_header')
-    <h1>Coders</h1>
+    <h1>Hola {{ auth()->user()->name }}</h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <p>Bienvenido al panel de Administración.</p>
 @stop
 
 @section('css')
