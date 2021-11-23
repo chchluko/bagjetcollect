@@ -91,6 +91,18 @@ return [
             'prefix_indexes' => true,
         ],
 
+        'proaex' => [
+            'driver' => 'sqlsrv',
+            'host' => env('PROAEX_HOST'),
+            'port' => env('PROAEX_PORT'),
+            'database' => env('PROAEX_DATABASE'),
+            'username' => env('PROAEX_USERNAME'),
+            'password' => env('PROAEX_PASSWORD'),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+        ],
+
     ],
 
     /*

@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Livewire\CourseStatus;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
-use App\Http\Livewire\CourseStatus;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\DocumentTypeController;
+use App\Http\Controllers\EmployeeDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +32,7 @@ Route::get('cursos/{course}', [CourseController::class, 'show'])->name('courses.
 Route::post('courses/{course}/enrolled', [CourseController::class, 'enrolled'])->middleware('auth')->name('courses.enrolled');
 
 Route::get('course-status/{course}', CourseStatus::class)->name('courses.status')->middleware('auth');
+
+Route::resource('expediente', DocumentTypeController::class)->names('archivo');
+Route::resource('empleado', EmployeeController::class)->names('empleado');
+Route::resource('empleadodatos', EmployeeDataController::class)->names('datosempleado');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResourcesTable extends Migration
+class CreateDocumentTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,11 @@ class CreateResourcesTable extends Migration
      */
     public function up()
     {
-        Schema::create('resources', function (Blueprint $table) {
+        Schema::create('document_types', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('type_id');
+            $table->unsignedBigInteger('area_id');
             $table->string('name');
-          //  $table->text('comentario')->nullable();
-            $table->string('url');
-            $table->unsignedBigInteger('resourceable_id');
-            $table->string('resourceable_type');
-
+            $table->string('vigencia');
             $table->timestamps();
         });
     }
@@ -34,6 +29,6 @@ class CreateResourcesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resources');
+        Schema::dropIfExists('document_types');
     }
 }

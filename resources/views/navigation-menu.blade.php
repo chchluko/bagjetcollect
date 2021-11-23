@@ -8,8 +8,8 @@ $nav_links =
 ],
 [
 'name' => 'Expedientes',
-'route' => route('courses.index'),
-'active' => request()->routeIs('courses.*')
+'route' => route('datosempleado.index'),
+'active' => request()->routeIs('datosempleado.*')
 ],
 ];
 @endphp
