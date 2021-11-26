@@ -35,4 +35,4 @@ Route::get('course-status/{course}', CourseStatus::class)->name('courses.status'
 
 Route::resource('expediente', DocumentTypeController::class)->names('archivo');
 Route::resource('empleado', EmployeeController::class)->names('empleado');
-Route::resource('empleadodatos', EmployeeDataController::class)->names('datosempleado');
+Route::resource('empleadodatos', EmployeeDataController::class)->names('datosempleado')->middleware('auth');

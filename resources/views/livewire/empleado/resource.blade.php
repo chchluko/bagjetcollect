@@ -19,9 +19,14 @@
                         </th>
                         <th scope="col"
                             class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                            Categoria
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
                             Descargar
                         </th>
-                        <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                        <th scope="col"
+                            class="px-6 py-3 text-xs font-medium tracking-wider text-center text-gray-500 uppercase">
                             Eliminar
                         </th>
                     </tr>
@@ -39,18 +44,21 @@
                             <div class="flex text-sm text-gray-900 item-center">{{ $resource->tipo->name }}</div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="flex text-sm text-gray-900 item-center">
-                                        <p class="">
-                                            <i class="mr-2 text-gray-900 cursor-pointer fas fa-download"
-                                            wire:click='download({{ $resource->id }})'></i>
-                                        </p>
+                            <div class="flex text-sm text-gray-900 item-center">{{ $resource->tipo->category->name }}
                             </div>
                         </td>
-                        <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                            <div class="flex text-sm text-gray-900 item-center">
-                                <i class="cursor-pointer fas fa-trash" wire:click='destroy({{ $resource->id }})'></i>
-                            </div>
+                        <td class="px-6 py-4 text-sm font-medium text-center whitespace-nowrap">
+                                @can($resource->tipo->permiso->name)
+                                    <i class="mr-2 text-gray-900 cursor-pointer fas fa-download"
+                                        wire:click='download({{ $resource->id }})'></i>
+                                @endcan
                         </td>
+                        <td class="px-6 py-4 text-sm font-medium text-center whitespace-nowrap">
+                            @can($resource->tipo->permiso->name)
+                                <i class="mr-2 text-gray-900 cursor-pointer fas fa-trash"
+                                        wire:click='destroy({{ $resource->id }})'></i>
+                            @endcan
+                                                    </td>
                     </tr>
                     @endforeach
                     <!-- More people... -->
@@ -82,15 +90,13 @@
 
                     <div class="flex mt-4 itmes-center">
                         <label for="type_id" class="w-32">{{ __("Tipo: ") }}</label>
-                        <select
-                            wire:model="type_id"
-                            id="type_id"
+                        <select wire:model="type_id" id="type_id"
                             class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm {{ ($errors->has('type_id') ? ' is-invalid' : null) }}">
                             <option value="">{{ __("Selecciona un Tipo") }}</option>
                             @if(count($tipos) > 0)
-                                @foreach ($tipos as $id => $name)
-                                    <option value="{{ $id }}">{{ $name }}</option>
-                                @endforeach
+                            @foreach ($tipos as $id => $name)
+                            <option value="{{ $id }}">{{ $name }}</option>
+                            @endforeach
                             @endif
                         </select>
                         @error("type_id")
@@ -103,7 +109,7 @@
 
                     <div class="flex mt-4 itmes-center">
                         <input type="file" wire:model='file' name="file" id="file{{ $iteration }}"
-                        class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     </div>
                     <div class="mt-1 font-bold text-blue-500" wire:loading wire:target='file'>
                         Cargando...
@@ -113,7 +119,8 @@
                     @enderror
 
                     <div class="flex mt-4 itmes-center">
-                        <button type="submit" class="px-4 py-2 mt-1 text-white bg-blue-500 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:shadow-outline">
+                        <button type="submit"
+                            class="px-4 py-2 mt-1 text-white bg-blue-500 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:shadow-outline">
                             {{ __("Guardar") }}
                         </button>
                     </div>

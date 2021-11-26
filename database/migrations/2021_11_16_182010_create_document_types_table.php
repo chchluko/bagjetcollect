@@ -15,7 +15,8 @@ class CreateDocumentTypesTable extends Migration
     {
         Schema::create('document_types', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('area_id');
+            $table->unsignedBigInteger('permission_id');
+            $table->unsignedBigInteger('category_id');
             $table->string('name');
             $table->string('vigencia');
             $table->timestamps();

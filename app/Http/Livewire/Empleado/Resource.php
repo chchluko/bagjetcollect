@@ -16,7 +16,8 @@ class Resource extends Component
 
     public function mount(EmployeeData $documento)
     {
-        $this->tipos = DocumentType::get()->pluck('name', 'id')->toArray();
+        $categorias = auth()->user()->getPermissionsViaRoles()->pluck('id');
+        $this->tipos = DocumentType::whereIn('permission_id',$categorias)->get()->pluck('name', 'id')->toArray();
         $this->documento = $documento;
     }
 

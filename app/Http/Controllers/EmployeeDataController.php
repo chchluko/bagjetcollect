@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\EmployeeData;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EmployeeDataController extends Controller
 {
@@ -14,6 +15,7 @@ class EmployeeDataController extends Controller
      */
     public function index()
     {
+        Alert::success('Bienvenido', auth()->user()->name);
         return view('empleado.datos.index');
     }
 
