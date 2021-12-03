@@ -48,7 +48,9 @@
     @isset($js)
     {{ $js }}
     @endisset
-    <script src="{{ asset('vendor/livewire-alert/livewire-alert.js') }}"></script>
+    <!--script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script-->
+    <script src="{{ asset('vendor/livewire-alert/sweetalert2@11.js') }}"></script>
+    <x-livewire-alert::scripts />
     @include('sweetalert::alert')
 </body>
 

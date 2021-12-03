@@ -55,10 +55,11 @@
                         </td>
                         <td class="px-6 py-4 text-sm font-medium text-center whitespace-nowrap">
                             @can($resource->tipo->permiso->name)
-                                <i class="mr-2 text-gray-900 cursor-pointer fas fa-trash"
-                                        wire:click='destroy({{ $resource->id }})'></i>
-                            @endcan
-                                                    </td>
+                                <!--i class="mr-2 text-gray-900 cursor-pointer fas fa-trash"
+                                        wire:click='destroy({{-- $resource->id --}})'></i-->
+                            <i class="mr-2 text-gray-900 cursor-pointer fas fa-trash"
+                                        wire:click='submit({{ $resource->id }})'></i>@endcan
+                        </td>
                     </tr>
                     @endforeach
                     <!-- More people... -->
