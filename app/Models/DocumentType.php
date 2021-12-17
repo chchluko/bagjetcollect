@@ -9,17 +9,17 @@ class DocumentType extends Model
 {
     use HasFactory;
 
-    public function resource()
+   /* public function resource()
     {
         return $this->morphMany('App\Models\Resource', 'resourceable');
-    }
+    }*/
 
-  /*  public function scopeCategory($query, $category_id)
+    public function scopeCategory($query, $category_id)
     {
         if ($category_id) {
             return $query->where('category_id', $category_id);
         }
-    }*/
+    }
 
     public function category()
     {
@@ -29,5 +29,10 @@ class DocumentType extends Model
     public function permiso()
     {
         return $this->hasOne('App\Models\Permission','id','permission_id');
+    }
+
+    public function recursos()
+    {
+        return $this->hasMany('App\Models\Resource', 'type_id', 'id');
     }
 }

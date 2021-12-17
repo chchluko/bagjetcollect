@@ -15,7 +15,7 @@ class EmployeeDataController extends Controller
      */
     public function index()
     {
-        Alert::success('Bienvenido', auth()->user()->name);
+      //  Alert::success('Bienvenido', auth()->user()->name);
         return view('empleado.datos.index');
     }
 
