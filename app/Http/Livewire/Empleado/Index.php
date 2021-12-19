@@ -9,7 +9,12 @@ use Livewire\WithPagination;
 class Index extends Component
 {
     use WithPagination;
-    public $search;
+    public $search,$status;
+
+    public function mount()
+    {
+        $this->status = '3';
+    }
 
     public function render()
     {
@@ -23,10 +28,22 @@ class Index extends Component
             where('NOMINA', 'like', '%'.$this->search.'%')
                 ->orWhere('NOMBRE', 'like', '%'.$this->search.'%')
                 ->orWhere('APELLIDOPATERNO', 'like', '%'.$this->search.'%')
-               ->active()
-               ->paginate(15);
+               ->active($this->status)
+                ->paginate(15);
         }else{
-            return EmployeeData::select('NOMINA','NOMBRE','APELLIDOPATERNO','APELLIDOMATERNO')->active()->orderBy('NOMINA','DESC')->paginate(15);
+            return EmployeeData::select('NOMINA','NOMBRE','APELLIDOPATERNO','APELLIDOMATERNO')
+                    ->active($this->status)
+                    ->orderBy('NOMINA','DESC')
+                    ->paginate(15);
+        }
+    }
+
+    public function completed()
+    {
+        if ($this->status == '3') {
+            $this->status = '0';
+        } else {
+            $this->status = '3';
         }
     }
 

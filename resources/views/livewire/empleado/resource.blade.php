@@ -18,8 +18,8 @@
                 <button
                     class="px-4 text-gray-700 block h-12 rounded-lg overflow-hidden focus:outline-none bg-white shadow"
                     x-on:click="open=true">
-                    <i class="fas fa-tags text-xs mr-2"></i>
-                    Categoria
+                    <i class="fas fa-folder text-xs mr-2"></i>
+                    Carpeta
                     <i class="fas fa-angle-down text-xs ml-2"></i>
                 </button>
                 <!-- Dropdown Body -->
@@ -42,7 +42,7 @@
                     <tr>
                         <th scope="col"
                             class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                            Categoria
+                            Carpeta
                         </th>
                         <th scope="col"
                             class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">

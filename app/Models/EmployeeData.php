@@ -18,10 +18,12 @@ class EmployeeData extends Model
 	    return $this->NOMBRE.' '.$this->APELLIDOPATERNO.' '.$this->APELLIDOMATERNO;
 	}
 
-    public function scopeActive($query)
-	{
-	    return $query->where('STATUS', 3);
-	}
+    public function scopeActive($query,$status)
+    {
+     if ($status) {
+            return $query->where('STATUS',$status);
+        }
+    }
 
     public function resource()
     {
